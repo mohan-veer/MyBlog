@@ -1,0 +1,15 @@
+<%- include("partials/header") -%>
+<h1>Home</h1>
+<p><%= homeContent %></p>
+<% for(let record of allPosts) { %>
+    <h2><%= record.title %></h2>
+    <div class="panda">
+        <p class="truncated">
+            <%= record.content %>
+        </p> 
+        <a href="/posts/<%= record._id %>">Read more</a>
+    </div>
+    
+<%}%>
+<p class="newPost">Wanna post some thing, go ahead >><a href="/compose">Compose Post</a></p>
+<%- include("partials/footer") -%>

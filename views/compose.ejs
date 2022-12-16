@@ -1,0 +1,25 @@
+<%- include("partials/header") -%>
+<h1>Compose</h1>
+<form action="/compose" method="post">
+    <div class="form-group">
+      <label for="articleTitle">Title</label>
+      <input type="text" class="form-control" name="textTitle" required>
+    </div>
+    <div class="form-group">
+      <label for="articleContent">Post</label>
+      <textarea class="form-control" name="textContent" rows="5" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Publish</button>
+  </form>
+  <% if(resultMap != null && resultMap.fail != null){ %>
+     <div class="alert alert-danger" role="alert">
+        <%= resultMap.fail %>
+      </div>
+ <% }%>
+ <% if(resultMap != null && resultMap.success != null) {%>
+    <div class="alert alert-success" role="alert">
+        <%= resultMap.success %>
+      </div>
+ <%}%>
+  
+<%- include("partials/footer") -%>
