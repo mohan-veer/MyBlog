@@ -56,6 +56,7 @@ app.use(express.static("public"));
 mongoose.connect(uri);
 
 app.get('/', function(req, res){
+  clearResultMap();
   posts = [];
   blogModel.find({},function(err, result){
     if(err){
@@ -83,6 +84,7 @@ app.get('/compose', function(req, res){
 });
 
 app.post('/compose', function(req, res){
+  clearResultMap();
   if(req.body.textTitle.trim().length === 0 || req.body.textContent.trim().length === 0){
     resMap['fail'] = "Both the fields should have content, empty spaces are not allowed as input!!!";
     delete resMap['success'];
@@ -154,6 +156,12 @@ function validateInputs(title, content){
     errMssgs.push('Content can be maximum of 1000 characters');
   }
   return errMssgs;
+}
+
+function clearResultMap(){
+  for(let key in Object.keys(resMap)){
+    delete resMap[key];
+  }
 }
 
 app.listen(port, function() {
