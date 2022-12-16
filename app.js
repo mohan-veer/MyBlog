@@ -8,7 +8,7 @@ const mongoose = require("mongoose");
 const app = express();
 const port = 3000;
 
-const uri = "mongodb://localhost:27017/BlogDB";
+const uri = "mongodb://*****/BlogDB";
 
 // Schema for Blog DB
 /*
